@@ -10,10 +10,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import generic_utility.FileUtility;
 
-public class CreateOrgTest {
+public class CreateOrgWithIndTest {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 
@@ -25,7 +26,8 @@ public class CreateOrgTest {
 
 //		getting data from excel file
 		String orgName = futil.getDataFromExcelFile("org", 2, 0);
-		
+		String industry = futil.getDataFromExcelFile("org", 1, 2);
+
 //		Launch the browser
 		WebDriver driver;
 		if (BROWSER.equals("chrome")) {
@@ -53,6 +55,10 @@ public class CreateOrgTest {
 
 		driver.findElement(By.name("accountname")).sendKeys(orgName);
 
+		WebElement indSel = driver.findElement(By.name("industry"));
+		Select sel = new Select(indSel);
+		sel.selectByValue(industry);
+
 		driver.findElement(By.xpath("//input[@title='Save [Alt+S]']")).click();
 
 //		Verification
@@ -61,6 +67,13 @@ public class CreateOrgTest {
 			System.out.println("Organization created successfully !!!");
 		} else {
 			System.out.println("organization is not created");
+		}
+
+		String actIndustry = driver.findElement(By.id("dtlview_Industry")).getText();
+		if (actIndustry.equals(industry)) {
+			System.out.println("Industry given Successfully!!!");
+		} else {
+			System.out.println("Industry has not given !!!");
 		}
 
 //		Log out
