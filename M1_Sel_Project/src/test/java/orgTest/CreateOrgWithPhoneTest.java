@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
 
 import generic_utility.FileUtility;
 import object_repository.HomePage;
@@ -15,8 +16,10 @@ import object_repository.LoginPage;
 
 public class CreateOrgWithPhoneTest {
 
-	public static void main(String[] args) throws InterruptedException, IOException {
+//	public static void main(String[] args) throws InterruptedException, IOException {
 
+	@Test
+	public void createOrgWithPhoneTest() throws IOException {
 		FileUtility futil = new FileUtility();
 		String BROWSER = futil.getDataFromPropFile("bro");
 		String URL = futil.getDataFromPropFile("url");
@@ -24,7 +27,7 @@ public class CreateOrgWithPhoneTest {
 		String PASSWORD = futil.getDataFromPropFile("pwd");
 
 //		getting data from excel file
-		String orgName = futil.getDataFromExcelFile("org", 2, 0);
+		String orgName = futil.getDataFromExcelFile("org", 2, 0)+ (int) (Math.random() * 1000);
 		String phoneNum = futil.getDataFromExcelFile("org", 1, 1);
 
 //		Launch the browser
@@ -44,7 +47,8 @@ public class CreateOrgWithPhoneTest {
 //		driver.get(URL);
 
 		LoginPage lp = new LoginPage(driver);
-
+		lp.login(USERNAME, PASSWORD, URL);
+		
 //		Login
 //		WebElement un = driver.findElement(By.name("user_name"));
 //		un.sendKeys(USERNAME);
@@ -58,8 +62,6 @@ public class CreateOrgWithPhoneTest {
 //		loginBtn.click();
 //		lp.getLoginBtn().click();
 
-//		Login method
-		lp.login(USERNAME, PASSWORD, URL);
 
 //		Creating Organization
 		driver.findElement(By.linkText("Organizations")).click();

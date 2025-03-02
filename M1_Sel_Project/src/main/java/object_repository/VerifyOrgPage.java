@@ -13,33 +13,25 @@ public class VerifyOrgPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(name = "user_name")
-	private WebElement un;
+	@FindBy(id = "dtlview_Organization Name")
+	private WebElement verifyON;
 
-	public WebElement getUn() {
-		return un;
+	public WebElement getVON() {
+		return verifyON;
 	}
-	
+
 	@FindBy(name = "user_password")
 	private WebElement pwd;
 
 	public WebElement getPwd() {
 		return pwd;
 	}
-	
+
 	@FindBy(id = "submitButton")
 	private WebElement loginBtn;
 
 	public WebElement getLoginBtn() {
 		return loginBtn;
-	}
-
-//	Business utility
-	public void login(String un, String pwd, String URL) {
-		driver.get(URL);
-		getUn().sendKeys(un);
-		getPwd().sendKeys(pwd);
-		getLoginBtn().click();
 	}
 
 }

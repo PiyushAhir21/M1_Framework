@@ -13,33 +13,25 @@ public class VerifyConPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(name = "user_name")
-	private WebElement un;
+	@FindBy(id = "dtlview_Last Name")
+	private WebElement verifyLN;
 
-	public WebElement getUn() {
-		return un;
+	public WebElement getVLN() {
+		return verifyLN;
 	}
-	
+
 	@FindBy(name = "user_password")
 	private WebElement pwd;
 
 	public WebElement getPwd() {
 		return pwd;
 	}
-	
+
 	@FindBy(id = "submitButton")
 	private WebElement loginBtn;
 
 	public WebElement getLoginBtn() {
 		return loginBtn;
-	}
-
-//	Business utility
-	public void login(String un, String pwd, String URL) {
-		driver.get(URL);
-		getUn().sendKeys(un);
-		getPwd().sendKeys(pwd);
-		getLoginBtn().click();
 	}
 
 }
