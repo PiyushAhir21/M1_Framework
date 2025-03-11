@@ -5,18 +5,34 @@
       <![CDATA[Organization created successfully !!!]]>
     </line>
   </reporter-output>
-  <suite started-at="2025-03-02T15:56:35 IST" name="Default suite" finished-at="2025-03-02T15:56:50 IST" duration-ms="15540">
+  <suite started-at="2025-03-11T21:08:40 IST" name="Default suite" finished-at="2025-03-11T21:09:25 IST" duration-ms="44670">
     <groups>
     </groups>
-    <test started-at="2025-03-02T15:56:35 IST" name="Default test" finished-at="2025-03-02T15:56:50 IST" duration-ms="15540">
+    <test started-at="2025-03-11T21:08:40 IST" name="Default test" finished-at="2025-03-11T21:09:25 IST" duration-ms="44670">
       <class name="orgTest.CreateOrgTest">
-        <test-method signature="createOrgTest()[pri:0, instance:orgTest.CreateOrgTest@576d5deb]" started-at="2025-03-02T15:56:35 IST" name="createOrgTest" finished-at="2025-03-02T15:56:50 IST" duration-ms="15507" status="PASS">
+        <test-method is-config="true" signature="openingBrowser()[pri:0, instance:orgTest.CreateOrgTest@54a7079e]" started-at="2025-03-11T21:08:40 IST" name="openingBrowser" finished-at="2025-03-11T21:08:42 IST" duration-ms="1661" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openingBrowser -->
+        <test-method is-config="true" signature="login()[pri:0, instance:orgTest.CreateOrgTest@54a7079e]" started-at="2025-03-11T21:08:42 IST" name="login" finished-at="2025-03-11T21:08:45 IST" duration-ms="2990" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method signature="createOrgTest()[pri:0, instance:orgTest.CreateOrgTest@54a7079e]" started-at="2025-03-11T21:08:45 IST" name="createOrgTest" finished-at="2025-03-11T21:09:22 IST" duration-ms="37444" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[Organization created successfully !!!]]>
             </line>
           </reporter-output>
         </test-method> <!-- createOrgTest -->
+        <test-method is-config="true" signature="logout()[pri:0, instance:orgTest.CreateOrgTest@54a7079e]" started-at="2025-03-11T21:09:22 IST" name="logout" finished-at="2025-03-11T21:09:25 IST" duration-ms="2453" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+        <test-method is-config="true" signature="closingBrowser()[pri:0, instance:orgTest.CreateOrgTest@54a7079e]" started-at="2025-03-11T21:09:25 IST" name="closingBrowser" finished-at="2025-03-11T21:09:25 IST" duration-ms="92" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closingBrowser -->
       </class> <!-- orgTest.CreateOrgTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

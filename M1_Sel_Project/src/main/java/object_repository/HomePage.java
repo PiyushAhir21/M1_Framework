@@ -15,14 +15,14 @@ public class HomePage {
 	}
 
 	@FindBy(linkText = "Organizations")
-	private WebElement orgLink;
+	public WebElement orgLink;
 
 	public WebElement getOrgLink() {
 		return orgLink;
 	}
 	
 	@FindBy(linkText = "Contacts")
-	private WebElement conLink;
+	public WebElement conLink;
 
 	public WebElement getConLink() {
 		return conLink;

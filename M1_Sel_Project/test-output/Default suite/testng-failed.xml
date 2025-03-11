@@ -5,7 +5,11 @@
     <classes>
       <class name="orgTest.CreateOrgTest">
         <methods>
+          <include name="openingBrowser"/>
+          <include name="logout"/>
+          <include name="closingBrowser"/>
           <include name="createOrgTest"/>
+          <include name="login"/>
         </methods>
       </class> <!-- orgTest.CreateOrgTest -->
     </classes>

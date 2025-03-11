@@ -3,16 +3,11 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="orgTest.CreateOrgWithIndTest">
+      <class name="orgTest.CreateOrgTest">
         <methods>
-          <include name="createOrgWithIndustryTest"/>
+          <include name="createOrgTest"/>
         </methods>
-      </class> <!-- orgTest.CreateOrgWithIndTest -->
-      <class name="orgTest.CreateOrgWithPhoneTest">
-        <methods>
-          <include name="createOrgWithPhoneTest"/>
-        </methods>
-      </class> <!-- orgTest.CreateOrgWithPhoneTest -->
+      </class> <!-- orgTest.CreateOrgTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
