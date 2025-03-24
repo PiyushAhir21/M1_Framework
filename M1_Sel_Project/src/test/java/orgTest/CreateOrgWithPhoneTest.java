@@ -1,68 +1,24 @@
 package orgTest;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
+import base_utility.BaseClass;
 import generic_utility.FileUtility;
-import object_repository.HomePage;
-import object_repository.LoginPage;
 
-public class CreateOrgWithPhoneTest {
+public class CreateOrgWithPhoneTest extends BaseClass{
 
 //	public static void main(String[] args) throws InterruptedException, IOException {
 
 	@Test
 	public void createOrgWithPhoneTest() throws IOException {
-		FileUtility futil = new FileUtility();
-		String BROWSER = futil.getDataFromPropFile("bro");
-		String URL = futil.getDataFromPropFile("url");
-		String USERNAME = futil.getDataFromPropFile("un");
-		String PASSWORD = futil.getDataFromPropFile("pwd");
 
-//		getting data from excel file
-		String orgName = futil.getDataFromExcelFile("org", 2, 0)+ (int) (Math.random() * 1000);
-		String phoneNum = futil.getDataFromExcelFile("org", 1, 1);
+		String phoneNum = new FileUtility().getDataFromExcelFile("org", 1, 1);
+		String orgName = new FileUtility().getDataFromExcelFile("org", 1, 0) + (int) (Math.random() * 1000);
 
-//		Launch the browser
-		WebDriver driver;
-		if (BROWSER.equals("chrome")) {
-			driver = new ChromeDriver();
-		} else if (BROWSER.equals("edge")) {
-			driver = new EdgeDriver();
-		} else if (BROWSER.equals("firefox")) {
-			driver = new FirefoxDriver();
-		} else {
-			driver = new ChromeDriver();
-		}
-
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-//		driver.get(URL);
-
-		LoginPage lp = new LoginPage(driver);
-		lp.login(USERNAME, PASSWORD, URL);
 		
-//		Login
-//		WebElement un = driver.findElement(By.name("user_name"));
-//		un.sendKeys(USERNAME);
-//		lp.getUn().sendKeys(USERNAME);
-
-//		WebElement pwd = driver.findElement(By.name("user_password"));
-//		pwd.sendKeys(PASSWORD);
-//		lp.getPwd().sendKeys(PASSWORD);
-
-//		WebElement loginBtn = driver.findElement(By.id("submitButton"));
-//		loginBtn.click();
-//		lp.getLoginBtn().click();
-
-
 //		Creating Organization
 		driver.findElement(By.linkText("Organizations")).click();
 		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
@@ -89,11 +45,6 @@ public class CreateOrgWithPhoneTest {
 
 		}
 
-//		Log out
-		HomePage hp = new HomePage(driver);
-		hp.logOut();
-		
-		driver.close();
 	}
 
 }

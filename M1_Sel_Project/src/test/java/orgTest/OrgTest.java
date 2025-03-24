@@ -2,6 +2,7 @@ package orgTest;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Base64;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,47 +14,23 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+import base_utility.BaseClass;
 import generic_utility.FileUtility;
 import object_repository.HomePage;
 import object_repository.LoginPage;
 
-public class OrgTest {
+public class OrgTest extends BaseClass {
 
 	@Test(groups = "st")
-		public void createOrgTest() throws IOException {
-		FileUtility futil = new FileUtility();
-		String BROWSER = futil.getDataFromPropFile("bro");
-		String URL = futil.getDataFromPropFile("url");
-		String USERNAME = futil.getDataFromPropFile("un");
-		String PASSWORD = futil.getDataFromPropFile("pwd");
-
-//	getting data from excel file
-		String orgName = futil.getDataFromExcelFile("org", 2, 0) + (int) (Math.random() * 1000);
-
-//	Launch the browser
-		WebDriver driver;
-		if (BROWSER.equals("chrome")) {
-			driver = new ChromeDriver();
-		} else if (BROWSER.equals("edge")) {
-			driver = new EdgeDriver();
-		} else if (BROWSER.equals("firefox")) {
-			driver = new FirefoxDriver();
-		} else {
-			driver = new ChromeDriver();
-		}
-
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-		driver.get(URL);
-
-		LoginPage lp = new LoginPage(driver);
-		lp.login(USERNAME, PASSWORD, URL);
+	public void createOrgTest() throws IOException {
 
 //	Creating Organization
 //	driver.findElement(By.linkText("Organizations")).click();
 
 		HomePage hp = new HomePage(driver);
 		hp.getOrgLink().click();
+
+		String orgName = new FileUtility().getDataFromExcelFile("org", 2, 0) + (int) (Math.random() * 1000);
 
 		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
 
@@ -70,46 +47,13 @@ public class OrgTest {
 			System.out.println("organization is not created");
 		}
 
-//	Log out
-		hp.logOut();
-
-		driver.close();
 	}
 
 	@Test(groups = "rt")
 	public void createOrgWithIndustryTest() throws IOException {
-		FileUtility futil = new FileUtility();
-		String BROWSER = futil.getDataFromPropFile("bro");
-		String URL = futil.getDataFromPropFile("url");
-		String USERNAME = futil.getDataFromPropFile("un");
-		String PASSWORD = futil.getDataFromPropFile("pwd");
 
-//	getting data from excel file
-		String orgName = futil.getDataFromExcelFile("org", 2, 0)+ (int) (Math.random() * 1000);
-		String industry = futil.getDataFromExcelFile("org", 1, 2);
-
-//	Launch the browser
-		WebDriver driver;
-		if (BROWSER.equals("chrome")) {
-			driver = new ChromeDriver();
-		} else if (BROWSER.equals("edge")) {
-			driver = new EdgeDriver();
-		} else if (BROWSER.equals("firefox")) {
-			driver = new FirefoxDriver();
-		} else {
-			driver = new ChromeDriver();
-		}
-
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
-//	Login
-//	driver.findElement(By.name("user_name")).sendKeys(USERNAME);
-//	driver.findElement(By.name("user_password")).sendKeys(PASSWORD);
-//	driver.findElement(By.id("submitButton")).click();
-
-		LoginPage lp = new LoginPage(driver);
-		lp.login(USERNAME, PASSWORD, URL);
+		String industry = new FileUtility().getDataFromExcelFile("org", 1, 2);
+		String orgName = new FileUtility().getDataFromExcelFile("org", 1, 0) + (int) (Math.random() * 1000);
 
 //	Creating Organization
 		driver.findElement(By.linkText("Organizations")).click();
@@ -138,56 +82,13 @@ public class OrgTest {
 			System.out.println("Industry has not given !!!");
 		}
 
-//	Log out
-		HomePage hp = new HomePage(driver);
-		hp.logOut();
-
-		driver.close();
 	}
 
 	@Test(groups = "rt")
 	public void createOrgWithPhoneTest() throws IOException {
-		FileUtility futil = new FileUtility();
-		String BROWSER = futil.getDataFromPropFile("bro");
-		String URL = futil.getDataFromPropFile("url");
-		String USERNAME = futil.getDataFromPropFile("un");
-		String PASSWORD = futil.getDataFromPropFile("pwd");
 
-//		getting data from excel file
-		String orgName = futil.getDataFromExcelFile("org", 2, 0)+ (int) (Math.random() * 1000);
-		String phoneNum = futil.getDataFromExcelFile("org", 1, 1);
-
-//		Launch the browser
-		WebDriver driver;
-		if (BROWSER.equals("chrome")) {
-			driver = new ChromeDriver();
-		} else if (BROWSER.equals("edge")) {
-			driver = new EdgeDriver();
-		} else if (BROWSER.equals("firefox")) {
-			driver = new FirefoxDriver();
-		} else {
-			driver = new ChromeDriver();
-		}
-
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-//		driver.get(URL);
-
-		LoginPage lp = new LoginPage(driver);
-		lp.login(USERNAME, PASSWORD, URL);
-
-//		Login
-//		WebElement un = driver.findElement(By.name("user_name"));
-//		un.sendKeys(USERNAME);
-//		lp.getUn().sendKeys(USERNAME);
-
-//		WebElement pwd = driver.findElement(By.name("user_password"));
-//		pwd.sendKeys(PASSWORD);
-//		lp.getPwd().sendKeys(PASSWORD);
-
-//		WebElement loginBtn = driver.findElement(By.id("submitButton"));
-//		loginBtn.click();
-//		lp.getLoginBtn().click();
+		String phoneNum = new FileUtility().getDataFromExcelFile("org", 1, 1);
+		String orgName = new FileUtility().getDataFromExcelFile("org", 1, 0) + (int) (Math.random() * 1000);
 
 //		Creating Organization
 		driver.findElement(By.linkText("Organizations")).click();
@@ -215,10 +116,5 @@ public class OrgTest {
 
 		}
 
-//		Log out
-		HomePage hp = new HomePage(driver);
-		hp.logOut();
-
-		driver.close();
 	}
 }

@@ -1,59 +1,25 @@
 package orgTest;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import base_utility.BaseClass;
 import generic_utility.FileUtility;
-import object_repository.HomePage;
-import object_repository.LoginPage;
 
-public class CreateOrgWithIndTest {
+public class CreateOrgWithIndTest extends BaseClass {
 
 //	public static void main(String[] args) throws InterruptedException, IOException {
 		@Test
 		public void createOrgWithIndustryTest() throws IOException {
-		FileUtility futil = new FileUtility();
-		String BROWSER = futil.getDataFromPropFile("bro");
-		String URL = futil.getDataFromPropFile("url");
-		String USERNAME = futil.getDataFromPropFile("un");
-		String PASSWORD = futil.getDataFromPropFile("pwd");
 
-//		getting data from excel file
-		String orgName = futil.getDataFromExcelFile("org", 2, 0)+ (int) (Math.random() * 1000);
-		String industry = futil.getDataFromExcelFile("org", 1, 2);
+			String industry = new FileUtility().getDataFromExcelFile("org", 1, 2);
+			String orgName = new FileUtility().getDataFromExcelFile("org", 1, 0) + (int) (Math.random() * 1000);
 
-//		Launch the browser
-		WebDriver driver;
-		if (BROWSER.equals("chrome")) {
-			driver = new ChromeDriver();
-		} else if (BROWSER.equals("edge")) {
-			driver = new EdgeDriver();
-		} else if (BROWSER.equals("firefox")) {
-			driver = new FirefoxDriver();
-		} else {
-			driver = new ChromeDriver();
-		}
-
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
-//		Login
-//		driver.findElement(By.name("user_name")).sendKeys(USERNAME);
-//		driver.findElement(By.name("user_password")).sendKeys(PASSWORD);
-//		driver.findElement(By.id("submitButton")).click();
-
-		LoginPage lp = new LoginPage(driver);
-		lp.login(USERNAME, PASSWORD, URL);
-		
+			
 //		Creating Organization
 		driver.findElement(By.linkText("Organizations")).click();
 		driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
@@ -81,11 +47,6 @@ public class CreateOrgWithIndTest {
 			System.out.println("Industry has not given !!!");
 		}
 
-//		Log out
-		HomePage hp = new HomePage(driver);
-		hp.logOut();
-		
-		driver.close();
 	}
 
 }
