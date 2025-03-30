@@ -3,11 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="extra.FaceBook">
+      <class name="orgTest.OrgTest">
         <methods>
-          <include name="fb"/>
+          <include name="openingBrowser"/>
+          <include name="logout"/>
+          <include name="closingBrowser"/>
+          <include name="createOrgTest"/>
+          <include name="login"/>
         </methods>
-      </class> <!-- extra.FaceBook -->
+      </class> <!-- orgTest.OrgTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

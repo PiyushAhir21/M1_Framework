@@ -25,5 +25,4 @@ public class GetDataFromProp {
 		pObj.setProperty("lastname", "cena");
 		pObj.store(fos, "no comment");
 	}
-
 }

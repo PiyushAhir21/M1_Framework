@@ -5,15 +5,11 @@
 		<listener class-name="listeners_utility.ListImp"></listener>
 	</listeners>
 	<test thread-count="5" name="Test">
-		<groups>
-			<run>
-				<include name="st"></include>
-			</run>
-		</groups>
 		<classes>
-			<class name="orgTest.OrgTest" />
+			<class name="extra.Test2" />
+			<class name="extra.Test3" />
+			<class name="extra.Test4" />
 		</classes>
-	</test> <!--
-	Test -->
+	</test> <!-- Test -->
 </suite> <!--
 Suite -->

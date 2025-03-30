@@ -11,7 +11,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 
 import generic_utility.FileUtility;
 import object_repository.HomePage;
@@ -20,14 +19,15 @@ import object_repository.LoginPage;
 public class BaseClass {
 
 	public WebDriver driver;
+	public static WebDriver sdriver;
 	public FileUtility futil = new FileUtility();
 
-	@Parameters("browser")
+//	@Parameters("browser")
 	@BeforeClass
-	public void openingBrowser(String browser) throws IOException {
-//		String BROWSER = futil.getDataFromPropFile("bro");
+	public void openingBrowser() throws IOException {
+		String BROWSER = futil.getDataFromPropFile("bro");
 
-		String BROWSER = browser;
+//		String BROWSER = browser;
 		
 		if (BROWSER.equals("chrome")) {
 			driver = new ChromeDriver();
@@ -38,6 +38,7 @@ public class BaseClass {
 		} else {
 			driver = new ChromeDriver();
 		}
+		sdriver = driver;
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
